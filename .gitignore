@@ -1,0 +1,5 @@
+# ignore node files
+bower_components/*
+node_modules/*
+www/*
+target/*

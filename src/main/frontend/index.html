@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>GameOfLiveApp</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+
+    <!-- build:css styles/libs.css -->
+    <!-- bower:css -->
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+
+</head>
+
+<body class="fullscreen" ng-app="GameOfLiveApp">
+<div ng-controller="GameController" align="center">
+    <h1>Game of Life</h1>
+    <br>
+    Height: <input type="text" ng-model="height"/>
+    Width: <input type="text" ng-model="width"/>
+    <button ng-click="newGame()">New</button>
+    <br>
+    <br>
+    <table id="board">
+        <tr ng-repeat="row in board track by $index">
+            <td ng-repeat="cell in row track by $index" ng-click="toggle($parent.$index, $index)"
+                class="{{cellClass($parent.$index, $index)}}">
+                <span ng-show="cell">&#9608;</span>
+            </td>
+        </tr>
+    </table>
+    <br>
+
+    <div ng-show="history.length > 0">
+        Step: {{history.length}}
+    </div>
+
+    <button ng-click="stepOver()">Step over</button>
+    <button ng-click="startLoop()" ng-show="!loopActive">Loop</button>
+    <button ng-click="stopLoop()" ng-show="loopActive">Stop</button>
+
+    <br><br>
+
+    <div ng-show="!loopActive">
+        <h2>Scenarios</h2>
+        <button ng-click="loadDisco()">Disco</button>
+        <button ng-click="loadSpaceships()">Spaceships</button>
+    </div>
+    <p class="history" ng-show="history.length > 0">Previous steps (click to rewind)</p>
+    <table class="history">
+        <tr>
+            <td ng-repeat="step in history" ng-click="$parent.step($index)">{{$index}}</td>
+        </tr>
+    </table>
+</div>
+</div>
+
+<!-- build:js scripts/libs.js -->
+<!-- bower:js -->
+<script src="../../../bower_components/jquery/dist/jquery.js"></script>
+<script src="../../../bower_components/angular/angular.js"></script>
+<script src="../../../bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+<script src="../../../bower_components/angular-touch/angular-touch.js"></script>
+<script src="../../../bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js"></script>
+<!-- endbower -->
+<!-- endbuild -->
+
+<!-- build:js scripts/app.js -->
+<script src="scripts/app.js"></script>
+<!-- endbuild -->
+</body>
+</html>

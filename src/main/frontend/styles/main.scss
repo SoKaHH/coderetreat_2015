@@ -1,0 +1,33 @@
+$icon-font-path: "../fonts/";
+
+// bower:scss
+@import "bootstrap";
+// endbower
+
+table#board td {
+  width: 1.5em;
+  height: 1.5em;
+  text-align: center;
+  vertical-align: middle;
+  border: solid 1px #ddd;
+}
+
+table#board td.new {
+  background-color: #efe;
+}
+
+table#board td.die {
+  background-color: #F66767;
+}
+
+.history {
+  color: #777;
+}
+
+table.history td {
+  width: 1.5em;
+  height: 1.5em;
+  text-align: center;
+  vertical-align: middle;
+  border: solid 1px #eee;
+}
